@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&family=Comic+Relief:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-display: "Roboto", "sans-serif"; 
+}
+@theme inline {
+  --shadow-input:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+}
+
+
+/* === Global Body Settings === */
+html, body, .lenis, .lenis-smooth {
+  overflow-x: hidden !important;
+  scrollbar-width: none !important;         /* Firefox */
+  -ms-overflow-style: none !important;      /* IE/Edge */
+  background-color: #000;                   /* fallback background */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.lenis::-webkit-scrollbar,
+.lenis-smooth::-webkit-scrollbar {
+  display: none !important;                 /* Chrome/Safari/Opera */
+}
+
+@layer utilities {
+  /* ===== Custom Scrollbar Utility (Optional) ===== */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ===== Gradient Animation ===== */
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-gradient {
+    animation: gradient 8s linear infinite;
+  }
+
+  /* ===== Shine Animation ===== */
+  @keyframes shine {
+    0% { background-position: 100%; }
+    100% { background-position: -100%; }
+  }
+
+  .animate-shine {
+    animation: shine 5s linear infinite;
+  }
+
+  /* ===== Star Movement Animations ===== */
+  @keyframes star-movement-bottom {
+    0% {
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-100%, 0%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes star-movement-top {
+    0% {
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100%, 0%);
+      opacity: 0;
+    }
+  }
+
+  .animate-star-movement-bottom {
+    animation: star-movement-bottom 0s linear infinite alternate;
+  }
+
+  .animate-star-movement-top {
+    animation: star-movement-top 0s linear infinite alternate;
+  }
+}
+
+.slide-in,
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+  z-index: 9999;
+  transform-origin: bottom;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.slide-out {
+  transform-origin: top;
+}
+
+
+.page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  z-index: 999;
+  background-color: #0f0f0f;
+}
