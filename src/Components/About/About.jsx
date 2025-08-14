@@ -40,7 +40,7 @@ const About = forwardRef((props, ref) =>{
             </div>
 
               <div className="font-[Anton] text-4xl text-gray-400 w-full flex " >Email <motion.span initial={{opacity:0, y:50}} whileInView={{opacity:1, y:0, transition:{delay:0.8, duration:0.3}}} viewport={{once:false, amount:.5}} className="font-[Roboto] text-[16px] flex sm:hidden justify-center items-center text-white ml-2"> vishalvishwas7082@gmail.com<Copy/></motion.span></div>
-              <motion.div initial={{opacity:0, y:50}} whileInView={{opacity:1, y:0, transition:{delay:0.8, duration:0.3}}} viewport={{once:false, amount:.5}} className="font-[Roboto] text-xl sm:text-2xl hidden sm:flex justify-start items-center text-white">Your Email Here<Copy/></motion.div>
+              <motion.div initial={{opacity:0, y:50}} whileInView={{opacity:1, y:0, transition:{delay:0.8, duration:0.3}}} viewport={{once:false, amount:.5}} className="font-[Roboto] text-xl sm:text-2xl hidden sm:flex justify-start items-center text-white">vishalvishwas7082@gmail.com<Copy/></motion.div>
             </div>
 
 
