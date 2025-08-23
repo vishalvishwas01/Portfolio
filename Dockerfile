@@ -15,9 +15,7 @@ RUN npm install
 # Build the React project
 RUN npm run build
 
-# ==========================
 # Production Stage
-# ==========================
 FROM nginx:stable-alpine AS production
 
 # Copy built app from builder
