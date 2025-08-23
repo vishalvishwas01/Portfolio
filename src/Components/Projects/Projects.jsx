@@ -4,6 +4,7 @@ import GradientText from '../../Common/GradientText'
 import AnimatedTextFill from '../../Common/AnimatedTextFill'
 import taskmanager from '../../assets/taskmanager.png'
 import profile from '../../assets/profile.jpeg'
+import BTScreenshot1 from './Images/BTScreenshot1.png'
 import { Link } from 'react-router-dom'
 import transition from '../../transition'
 
@@ -26,7 +27,11 @@ const Projects = forwardRef((props, ref) =>{
           
         )}
         {hovered === 'second' && (
-          <img src={profile} className='w-full h-full object-cover rounded-2xl translate-y-50 border-8 border-gray-500' alt="Portfolio" />
+          <img src={BTScreenshot1} className='w-full h-full object-contain bg-gray-300 rounded-2xl translate-y-50 border-8 border-gray-500' alt="Portfolio" />
+        )}
+
+        {hovered === 'third' && (
+          <img src={profile} className='w-full h-full object-contain bg-gray-300 rounded-2xl translate-y-50 border-8 border-gray-500' alt="Portfolio" />
         )}
       </motion.div>
 
@@ -87,6 +92,47 @@ const Projects = forwardRef((props, ref) =>{
         </Link>
 
         {/* Project 2 */}
+        <Link className='w-full' to='/projects/BridgeTalk'  state={{ fromProjects: true }}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0, transition: { delay: 0.2, duration: 0.5 } }}
+          viewport={{ once: false, amount: 0.5 }}
+          className='pb-4 pt-4 w-full h-auto flex flex-col justify-center items-center gap-2 border-b-2 border-gray-500'
+        >
+          <button
+            className='relative w-full h-auto flex justify-start items-center font-[Anton] cursor-pointer'
+            onMouseEnter={() => setHovered('second')}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <AnimatedTextFill text='BridgeTalk' />
+            
+          </button>
+          
+
+          {/* Tech Stack */}
+          <div className='w-full flex flex-wrap justify-start items-center gap-2'>
+            {['React', 'Firebase', 'Tailwind Css'].map((tech, i) => (
+              <React.Fragment key={tech}>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { delay: 0.5 + i * 0.1, duration: 0.5 },
+                  }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  className='text-[16px] text-gray-400 font-semibold tracking-normal'
+                >
+                  {tech}
+                </motion.div>
+                {i !== 4 && <div className='rounded-full bg-gray-500 w-3 h-3'></div>}
+              </React.Fragment>
+            ))}
+          </div>
+        </motion.div>
+        </Link>
+
+        {/* Project 3 */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.5 } }}
@@ -95,7 +141,7 @@ const Projects = forwardRef((props, ref) =>{
         >
           <button
             className='relative w-full h-auto flex justify-start items-center font-[Anton] cursor-pointer'
-            onMouseEnter={() => setHovered('second')}
+            onMouseEnter={() => setHovered('third')}
             onMouseLeave={() => setHovered(null)}
           >
             <AnimatedTextFill text='Portfolio' />

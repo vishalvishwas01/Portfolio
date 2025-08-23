@@ -9,7 +9,7 @@ export function SignupForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const [status, setStatus] = useState('');  // Success or error message
+  const [status, setStatus] = useState(''); 
   const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = async () => {

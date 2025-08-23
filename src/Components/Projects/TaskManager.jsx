@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import "./styles.css";
 import "swiper/css";
 import transition from '../../transition'
-
 import Screenshot1 from './Images/Screenshot1.png'
 import Screenshot2 from './Images/Screenshot2.png'
 import Screenshot4 from './Images/Screenshot4.png'

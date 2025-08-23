@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Dashboard from './Components/Dashboard/Dashboard';
 import TaskManager from './Components/Projects/TaskManager';
+import BridgeTalk from './Components/Projects/BridgeTalk';
 import { AnimatePresence } from 'framer-motion';
 
 function AnimatedRoutes() {
@@ -23,6 +24,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={shouldAnimate ? location.pathname : 'no-transition'}>
         <Route path='/*' element={<Dashboard />} />
         <Route path='/projects/taskmanager' element={<TaskManager />} />
+        <Route path='/projects/BridgeTalk' element={<BridgeTalk />} />
       </Routes>
     </AnimatePresence>
   );
