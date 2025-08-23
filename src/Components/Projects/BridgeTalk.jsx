@@ -51,6 +51,7 @@ function BridgeTalk() {
                     <li className="font-[Roboto] text-xl text-gray-300">Frontend on Vercel</li>
                 </ul>
                 <div className="font-[Roboto] text-xl sm:text-2xl text-gray-400 mt-4">⚙️ Key Features</div>
+                
                 <div className="font-[Roboto] text-xl sm:text-2xl text-gray-300">🔐 User authentication system with Firebase</div>
                 <div className="font-[Roboto] text-xl sm:text-2xl text-gray-300">💬 Real-time chat (1-to-1 messaging)</div>
                 <div className="font-[Roboto] text-xl sm:text-2xl text-gray-300">🌍 Multi-language translation of messages based on user preference</div>

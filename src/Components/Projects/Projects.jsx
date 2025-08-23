@@ -58,14 +58,16 @@ const Projects = forwardRef((props, ref) =>{
           viewport={{ once: false, amount: 0.5 }}
           className='pb-4 w-full h-auto flex flex-col justify-center items-center gap-2 border-b-2 border-gray-500'
         >
-          <button
-            className='relative w-full h-auto flex justify-start items-center font-[Anton] cursor-pointer'
-            onMouseEnter={() => setHovered('first')}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <AnimatedTextFill text='Multi Task Manager' />
-            
-          </button>
+          <div className='w-full h-auto flex justify-start items-center'>
+            <button
+              className='relative w-auto h-auto flex justify-start items-center font-[Anton] cursor-pointer'
+              onMouseEnter={() => setHovered('first')}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <AnimatedTextFill text='Multi Task Manager' />
+              <svg className='pl-4' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+            </button>
+          </div>
           
 
           {/* Tech Stack */}
@@ -99,14 +101,17 @@ const Projects = forwardRef((props, ref) =>{
           viewport={{ once: false, amount: 0.5 }}
           className='pb-4 pt-4 w-full h-auto flex flex-col justify-center items-center gap-2 border-b-2 border-gray-500'
         >
-          <button
-            className='relative w-full h-auto flex justify-start items-center font-[Anton] cursor-pointer'
-            onMouseEnter={() => setHovered('second')}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <AnimatedTextFill text='BridgeTalk' />
-            
-          </button>
+          <div className='w-full h-auto flex justify-start items-center'>
+            <button
+              className='relative w-auto h-auto flex justify-start items-center font-[Anton] cursor-pointer'
+              onMouseEnter={() => setHovered('second')}
+              onMouseLeave={() => setHovered(null)}
+              >
+              <AnimatedTextFill text='BridgeTalk' /> 
+              <svg className='pl-4' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+            </button>
+          </div>
+          
           
 
           {/* Tech Stack */}
@@ -133,23 +138,27 @@ const Projects = forwardRef((props, ref) =>{
         </Link>
 
         {/* Project 3 */}
+        <Link className='w-full' to='/projects/Portfolio'  state={{ fromProjects: true }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.5 } }}
           viewport={{ once: false, amount: 0.5 }}
           className='pb-4 pt-4 w-full h-auto flex flex-col justify-center items-center gap-2 border-b-2 border-gray-500'
-        >
-          <button
-            className='relative w-full h-auto flex justify-start items-center font-[Anton] cursor-pointer'
-            onMouseEnter={() => setHovered('third')}
-            onMouseLeave={() => setHovered(null)}
           >
-            <AnimatedTextFill text='Portfolio' />
-          </button>
+          <div className='w-full h-auto flex justify-start items-center'>
+            <button
+              className='relative w-auto h-auto flex justify-start items-center font-[Anton] cursor-pointer'
+              onMouseEnter={() => setHovered('third')}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <AnimatedTextFill text='Portfolio' />
+              <svg className='pl-4' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+            </button>
+          </div>
 
           {/* Tech Stack */}
           <div className='w-full flex flex-wrap justify-start items-center gap-2'>
-            {['React', 'Express.JS', 'Docker', 'Tailwind Css'].map((tech, i) => (
+            {['React', 'Framer', 'Lenis', 'Docker', 'Tailwind Css'].map((tech, i) => (
               <React.Fragment key={tech}>
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
@@ -160,7 +169,7 @@ const Projects = forwardRef((props, ref) =>{
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                   className='text-[16px] text-gray-400 font-semibold tracking-normal'
-                >
+                  >
                   {tech}
                 </motion.div>
                 {i !== 3 && <div className='rounded-full bg-gray-500 w-3 h-3'></div>}
@@ -168,6 +177,7 @@ const Projects = forwardRef((props, ref) =>{
             ))}
           </div>
         </motion.div>
+        </Link>
 
       </div>
     </div>

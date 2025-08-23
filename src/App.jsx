@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-ro
 import Dashboard from './Components/Dashboard/Dashboard';
 import TaskManager from './Components/Projects/TaskManager';
 import BridgeTalk from './Components/Projects/BridgeTalk';
+import Portfolio from './Components/Projects/Portfolio';
 import { AnimatePresence } from 'framer-motion';
 
 function AnimatedRoutes() {
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
         <Route path='/*' element={<Dashboard />} />
         <Route path='/projects/taskmanager' element={<TaskManager />} />
         <Route path='/projects/BridgeTalk' element={<BridgeTalk />} />
+        <Route path='/projects/Portfolio' element={<Portfolio />} />
       </Routes>
     </AnimatePresence>
   );

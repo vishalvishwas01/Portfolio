@@ -4,7 +4,6 @@ import { useLottie } from "lottie-react";
 import { motion, useAnimation } from "framer-motion";
 import arrow from "../assets/arrow.json";
 import linkimage from '../assets/linkimage.svg'
-import ArrowAnimation from "./ArrowAnimation";
 import { Link2 } from "./Link2";
 
 export default function AnimatedTextFill({ text = "Hover Me" }) {
@@ -56,7 +55,7 @@ export default function AnimatedTextFill({ text = "Hover Me" }) {
         WebkitTextFillColor: "transparent",
       }}
     >
-      {text}<img className="block sm:hidden" src={linkimage} alt="textfill"/>
+      {text}
       {/* Conditionally render arrow only when hovered */}
        
         <div className="rotate-90 h-5 hidden sm:"><Link2 /></div>
