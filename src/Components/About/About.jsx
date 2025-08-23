@@ -34,12 +34,12 @@ const About = forwardRef((props, ref) => {
           viewport={{ once: false, amount: 0.5 }}
           className="font-[Roboto] w-full sm:w-120 h-auto text-[12px] md:text-[14px] lg:text-2xl leading-8 text-white"
         >
-          I’m a Full Stack MERN Developer with a strong foundation in building
+          I am a Full Stack MERN Developer with a strong foundation in building
           scalable, responsive web applications using MongoDB, Express.js,
           React, and Node.js. I specialize in clean UI design with Tailwind CSS
-          and intuitive UX powered by Framer Motion. With Docker, I ensure
+          and intuitive UX powered by Framer Motion. I also leverage Firebase for authentication, real-time databases, and cloud storage, enabling seamless and secure user experiences. With Docker, I ensure
           efficient development and deployment workflows across environments.
-          I’m detail-oriented, collaborative, and always eager to learn emerging
+          I am detail-oriented, collaborative, and always eager to learn emerging
           technologies. My work reflects a balance of functional performance and
           user-centric design—crafted with precision and built for scale. I
           value teamwork, clear communication, and solving real-world problems

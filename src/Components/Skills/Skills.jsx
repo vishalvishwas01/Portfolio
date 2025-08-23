@@ -1,17 +1,17 @@
 import React, { forwardRef,useEffect } from "react";
 import JsLogo from "./Images/Js.png";
 import ReactLogo from "./Images/react.png";
-import GSAPLogo from "./Images/GSAP.png";
 import FramerLogo from "./Images/framerlogo.svg";
 import TailwindLogo from "./Images/tailwind.png";
 import NodeLogo from "./Images/node.png";
 import ExpressLogo from "./Images/express.png";
 import MongoLogo from "./Images/mongo.png";
 import MySQLLogo from "./Images/mysql.png";
+import Firebase from './Images/Firebase.svg'
 import GithubLogo from "./Images/github.png";
 import DockerLogo from "./Images/docker.png";
 import GradientText from "../../Common/GradientText";
-import ScrollSkillItem from "./ScrollSkillItem"; // ✅ Our new helper
+import ScrollSkillItem from "./ScrollSkillItem";
 
 const Skills = forwardRef((props, ref) => {
   return (
@@ -42,10 +42,6 @@ const Skills = forwardRef((props, ref) => {
               <img src={ReactLogo} alt="React" />
               React
             </ScrollSkillItem>
-            {/* <ScrollSkillItem delay={0.2}>
-              <img src={GSAPLogo} alt="GSAP" />
-              GSAP
-            </ScrollSkillItem> */}
             <ScrollSkillItem delay={0.3}>
               <img src={FramerLogo} alt="Framer" />
               Framer Motion
@@ -85,8 +81,8 @@ const Skills = forwardRef((props, ref) => {
               MongoDB
             </ScrollSkillItem>
             <ScrollSkillItem delay={0.1}>
-              <img src={MySQLLogo} alt="MySQL" />
-              MySQL
+              <img src={Firebase} alt="MySQL" />
+              Firebase
             </ScrollSkillItem>
           </div>
         </div>
