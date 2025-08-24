@@ -59,3 +59,10 @@
    ```bash
    npm run dev
 
+## 📜 License  
+
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+You are free to use, modify, and distribute this project under the terms of the license.  
+
+For more details, see the [LICENSE](./LICENSE) file.
+
