@@ -1,12 +1,68 @@
-# React + Vite
+#  <img src="public/ProfilePic.png" alt="Portfolio Logo" width="50"/> 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)  
+![TailwindCSS](https://img.shields.io/badge/Styling-TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
+![Framer Motion](https://img.shields.io/badge/Animations-Framer%20Motion-purple?style=for-the-badge&logo=framer)  
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)  
 
-Currently, two official plugins are available:
+> **My Portfolio** is a modern, interactive, and visually appealing personal website.  
+> It showcases my **skills, experience, projects, and about me** in an elegant and engaging way.  
+> Built with **React, TailwindCSS, Framer Motion, and Lenis smooth scroll**, this portfolio reflects both my technical skills and design aesthetics.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+# Live Link  
+> <a href="https://portfolio-peach-theta-gbghx5snbg.vercel.app/" target="_blank">Open Portfolio</a>  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Features  
+
+✅ Smooth, modern UI with **Lenis-powered scrolling**  
+✅ **Framer Motion animations** for a lively and engaging experience  
+✅ **Responsive design**, optimized for all screen sizes  
+✅ **Showcases my projects**, skills, and work experience  
+✅ Clean code and modular structure  
+✅ Deployed on **Vercel** for fast performance  
+
+---
+
+## 🌍 Use Case  
+
+- Recruiters or clients can **explore my skills and past work** in one place  
+- Developers/designers can take **inspiration** for their own portfolio  
+- Provides an **interactive resume** that looks great on both desktop and mobile  
+
+---
+
+## 🛠️ Tech Stack  
+
+| Frontend | Styling | Animations | Scrolling | Deployment |
+|----------|---------|------------|-----------|-------------|
+| ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white) | ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?logo=framer&logoColor=white) | Lenis | ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white) |
+
+---
+
+## 📦 Installation & Setup  
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/vishalvishwas01/Portfolio.git
+
+2. **Navigate into the project folder**
+   ```bash
+   cd Portfolio
+3. **Install dependencies**
+   ```bash
+   npm install
+4. **Run the development server**
+   ```bash
+   npm run dev
+
+## 📜 License  
+
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+You are free to use, modify, and distribute this project under the terms of the license.  
+
+For more details, see the [LICENSE](./LICENSE) file.
+
