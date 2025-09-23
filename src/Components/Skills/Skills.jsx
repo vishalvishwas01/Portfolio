@@ -8,6 +8,7 @@ import ExpressLogo from "./Images/express.png";
 import MongoLogo from "./Images/mongo.png";
 import MySQLLogo from "./Images/mysql.png";
 import postmanlogo from "./Images/postmanlogo.svg";
+import socketlogo from "./Images/socketlogo.svg";
 import jwtlogo from "./Images/jwtlogo.svg";
 import Firebase from './Images/Firebase.svg'
 import GithubLogo from "./Images/github.png";
@@ -76,6 +77,10 @@ const Skills = forwardRef((props, ref) => {
             <ScrollSkillItem delay={0.1}>
               <img src={postmanlogo} alt="postman" />
               Postman
+            </ScrollSkillItem>
+            <ScrollSkillItem delay={0.1}>
+              <img src={socketlogo} alt="socket.io" />
+              Socket.io
             </ScrollSkillItem>
           </div>
         </div>
