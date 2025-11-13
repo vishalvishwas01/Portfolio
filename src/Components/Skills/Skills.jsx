@@ -105,7 +105,7 @@ const Skills = forwardRef((props, ref) => {
               MongoDB
             </ScrollSkillItem>
             <ScrollSkillItem delay={0.1}>
-              <img src={Firebase} alt="MySQL" />
+              <img src={Firebase} alt="Firebase" />
               Firebase
             </ScrollSkillItem>
           </div>
