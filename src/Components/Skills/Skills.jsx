@@ -6,7 +6,7 @@ import TailwindLogo from "./Images/tailwind.png";
 import NodeLogo from "./Images/node.png";
 import ExpressLogo from "./Images/express.png";
 import MongoLogo from "./Images/mongo.png";
-import MySQLLogo from "./Images/mysql.png";
+import Nextjs from "./Images/Nextjs.svg"
 import postmanlogo from "./Images/postmanlogo.svg";
 import socketlogo from "./Images/socketlogo.svg";
 import jwtlogo from "./Images/jwtlogo.svg";
@@ -15,6 +15,7 @@ import GithubLogo from "./Images/github.png";
 import DockerLogo from "./Images/docker.png";
 import GradientText from "../../Common/GradientText";
 import ScrollSkillItem from "./ScrollSkillItem";
+import Ts from "./Images/Ts.png"
 
 const Skills = forwardRef((props, ref) => {
   return (
@@ -38,8 +39,16 @@ const Skills = forwardRef((props, ref) => {
           </div>
           <div className="h-auto flex flex-wrap justify-start items-center gap-2 sm:gap-5 w-full">
             <ScrollSkillItem delay={0.0}>
+              <img src={Ts} alt="JS" />
+              TypeScript
+            </ScrollSkillItem>
+            <ScrollSkillItem delay={0.0}>
               <img src={JsLogo} alt="JS" />
               JavaScript
+            </ScrollSkillItem>
+            <ScrollSkillItem delay={0.1}>
+              <img src={Nextjs} alt="Next" />
+              Next
             </ScrollSkillItem>
             <ScrollSkillItem delay={0.1}>
               <img src={ReactLogo} alt="React" />

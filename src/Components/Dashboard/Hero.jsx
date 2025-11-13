@@ -36,7 +36,7 @@ const Hero = forwardRef((props, ref) =>{
         <AnimatedContent direction='vertical' delay={500}>
         <div className='w-full flex flex-col justify-start items-start  text-2xl break-all pl-3'>
             <div className='w-full h-auto flex justify-start items-start'><TextGenerateEffect words={"Hi, I'm Vishal Vishwas."}/></div>
-            <div className='w-full h-auto text-left '><TextGenerateEffect words={"A MERN Stack Developer passionate about building fast, scalable, and user-friendly web apps using MongoDB, Express, React, and Node.js "}/></div>
+            <div className='w-full h-auto text-left '><TextGenerateEffect words={"A MERN Stack Developer passionate about building fast, scalable, and user-friendly web apps using Next.js, React.js, TypeScript, JavaScript, Express.js, MongoDB and Node.js"}/></div>
         </div>
         </AnimatedContent>
       </div>  

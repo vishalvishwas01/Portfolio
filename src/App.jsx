@@ -5,6 +5,7 @@ import TaskManager from './Components/Projects/TaskManager';
 import BridgeTalk from './Components/Projects/BridgeTalk';
 import Portfolio from './Components/Projects/Portfolio';
 import FileWhisper from './Components/Projects/FileWhisper';
+import DataVine from './Components/Projects/DataVine';
 import { AnimatePresence } from 'framer-motion';
 
 function AnimatedRoutes() {
@@ -29,6 +30,7 @@ function AnimatedRoutes() {
         <Route path='/projects/BridgeTalk' element={<BridgeTalk />} />
         <Route path='/projects/Portfolio' element={<Portfolio />} />
         <Route path='/projects/filewhisper' element={<FileWhisper />} />
+        <Route path='/projects/datavine' element={<DataVine />} />
       </Routes>
     </AnimatePresence>
   );
