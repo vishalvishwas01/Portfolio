@@ -7,12 +7,12 @@ import { useEffect } from "react";
 import "./styles.css";
 import "swiper/css";
 import transition from "../../transition";
-import Screenshot1 from './ImagesDV/Screenshot1.png'
-import Screenshot2 from './ImagesDV/Screenshot2.png'
-import Screenshot3 from './ImagesDV/Screenshot3.png'
-import Screenshot4 from './ImagesDV/Screenshot4.png'
-import Screenshot5 from './ImagesDV/Screenshot5.png'
-import Screenshot6 from './ImagesDV/Screenshot6.png'
+import Screenshot1 from './ImagesDV/screenshot1.png'
+import Screenshot2 from './ImagesDV/screenshot2.png'
+import Screenshot3 from './ImagesDV/screenshot3.png'
+import Screenshot4 from './ImagesDV/screenshot4.png'
+import Screenshot5 from './ImagesDV/screenshot5.png'
+import Screenshot6 from './ImagesDV/screenshot6.png'
 import Back from "./Images/Back.svg";
 
 function DataVine() {
