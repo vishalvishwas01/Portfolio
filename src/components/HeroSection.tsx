@@ -1,14 +1,27 @@
-import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Mail, Twitter } from 'lucide-react';
-import profileImage from '@/assets/profile.jpg';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import profileImage from "@/assets/profile.jpg";
 
 const HeroSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -29,7 +42,7 @@ const HeroSection = () => {
           >
             Hello, I'm
           </motion.p>
-          
+
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold font-display mb-6"
             initial={{ opacity: 0, y: 30 }}
@@ -56,8 +69,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            Building scalable web applications with React, Next.js, Node.js, and cloud technologies like AWS.
-            MCA student at Amity University with expertise in MERN stack and AI-powered solutions.
+            Building scalable web applications with React, Next.js, Node.js, and
+            cloud technologies like AWS. MCA student at Amity University with
+            expertise in MERN stack and AI-powered solutions.
           </motion.p>
 
           <motion.div
@@ -79,14 +93,19 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
           >
             {[
-              { icon: Github, href: 'https://github.com/vishalvishwas01' },
-              { icon: Linkedin, href: 'https://linkedin.com/in/vishalvishwas' },
-              { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com' },
+              { icon: Github, href: "https://github.com/vishalvishwas01" },
+              { icon: Linkedin, href: "https://linkedin.com/in/vishalvishwas" },
+              {
+                icon: Mail,
+                href: isMobile
+                  ? "mailto:vishalvishwas7082@gmail.com"
+                  : "https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com",
+              },
             ].map((social, index) => (
               <motion.a
                 key={index}
                 href={social.href}
-                target="_blank"
+                target={social.icon === Mail && isMobile ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 className="social-link"
                 whileHover={{ scale: 1.1 }}
@@ -108,7 +127,7 @@ const HeroSection = () => {
           <div className="relative">
             {/* Glow effect behind image */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-3xl scale-110" />
-            
+
             <motion.div
               className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden glow-border"
               animate={{ y: [0, -10, 0] }}
@@ -127,7 +146,12 @@ const HeroSection = () => {
             <motion.div
               className="absolute -bottom-4 -right-4 card-glow px-4 py-2"
               animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
             >
               <span className="text-primary font-semibold">MCA @ Amity</span>
             </motion.div>

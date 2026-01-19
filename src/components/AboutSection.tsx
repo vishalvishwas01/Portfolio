@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import {
   MapPin,
@@ -12,9 +12,20 @@ import {
   Phone,
   Globe,
 } from "lucide-react";
-import {Copy} from './ui/Copy'
+import { Copy } from "./ui/Copy";
 
 const AboutSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -23,7 +34,9 @@ const AboutSection = () => {
       icon: Mail,
       label: "Email",
       value: "vishalvishwas7082@gmail.com",
-      href: "https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com",
+      href: isMobile
+        ? "mailto:vishalvishwas7082@gmail.com"
+        : "https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com",
     },
     {
       icon: Phone,
@@ -145,7 +158,7 @@ const AboutSection = () => {
                 <motion.a
                   href={contact.href}
                   target={
-                    contact.href.startsWith("http") ? "_blank" : undefined
+                    contact.label === "Email" && isMobile ? undefined : "_blank"
                   }
                   rel={
                     contact.href.startsWith("http")
@@ -179,7 +192,7 @@ const AboutSection = () => {
                     }}
                     className="p-2 rounded  text-white hidden sm:block whitespace-nowrap transition-colors"
                   >
-                    {copied.email ? <Check/> : <Copy height={26} width={26} />}
+                    {copied.email ? <Check /> : <Copy height={26} width={26} />}
                   </button>
                 )}
                 {contact.label === "Phone" && (
@@ -191,7 +204,7 @@ const AboutSection = () => {
                     }}
                     className="p-2 rounded text-white hidden sm:block whitespace-nowrap transition-colors"
                   >
-                    {copied.phone ? <Check/> : <Copy height={26} width={26} />}
+                    {copied.phone ? <Check /> : <Copy height={26} width={26} />}
                   </button>
                 )}
               </motion.div>
@@ -205,11 +218,14 @@ const AboutSection = () => {
               transition={{ delay: 0.8 }}
             >
               <a
-                href="https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com"
-                target="blank"
+                href={
+                  isMobile
+                    ? "mailto:vishalvishwas7082@gmail.com"
+                    : "https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com"
+                }
+                target={isMobile ? undefined : "_blank"}
                 className="hero-button inline-flex items-center gap-2 w-full justify-center"
               >
-                <Mail className="w-5 h-5" />
                 Let's Work Together
               </a>
             </motion.div>
