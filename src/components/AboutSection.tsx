@@ -141,7 +141,7 @@ const AboutSection = () => {
             </h3>
 
             {contactInfo.map((contact, index) => (
-              <motion.div key={index} className="flex items-center gap-4">
+              <motion.div key={index} className="flex items-center gap-2">
                 <motion.a
                   href={contact.href}
                   target={
@@ -177,7 +177,7 @@ const AboutSection = () => {
                       e.stopPropagation();
                       handleCopy("email", contact.value);
                     }}
-                    className="p-2 rounded  text-white whitespace-nowrap transition-colors"
+                    className="p-2 rounded  text-white hidden sm:block whitespace-nowrap transition-colors"
                   >
                     {copied.email ? <Check/> : <Copy height={26} width={26} />}
                   </button>
@@ -189,7 +189,7 @@ const AboutSection = () => {
                       e.stopPropagation();
                       handleCopy("phone", contact.value);
                     }}
-                    className="p-2 rounded text-white whitespace-nowrap transition-colors"
+                    className="p-2 rounded text-white hidden sm:block whitespace-nowrap transition-colors"
                   >
                     {copied.phone ? <Check/> : <Copy height={26} width={26} />}
                   </button>

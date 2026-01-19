@@ -136,7 +136,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com"
+                href="mailto:vishalvishwas7082@gmail.com"
                 target="_blank"
                 className="mt-4 px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium"
                 initial={{ opacity: 0, y: 20 }}
