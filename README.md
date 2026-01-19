@@ -107,35 +107,6 @@ npm run build
 npm run preview
 ```
 
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── AboutSection.tsx          # About me section with stats and contact info
-│   ├── BackgroundAnimation.tsx   # Animated background with particles
-│   ├── ExperienceSection.tsx     # Experience and education timeline
-│   ├── Footer.tsx                # Footer with social links
-│   ├── HeroSection.tsx           # Main hero section
-│   ├── Navbar.tsx                # Navigation bar with mobile menu
-│   ├── NavLink.tsx               # Custom nav link component
-│   ├── ProjectsSection.tsx       # Featured projects carousel
-│   ├── SkillsSection.tsx         # Skills categorized by type
-│   └── ui/                       # shadcn/ui components
-├── hooks/
-│   ├── use-toast.ts              # Toast notification hook
-│   └── useSmoothScroll.ts        # Smooth scroll hook (Lenis)
-├── lib/
-│   └── utils.ts                  # Utility functions
-├── pages/
-│   ├── Index.tsx                 # Main home page
-│   └── NotFound.tsx              page
-├── assets/                       # Images and static files
-├── App.tsx                       # App root component
-├── index.css                     # Global styles and custom classes
-└── main.tsx                      # Entry point
-```
-
 ## 🎨 Customization
 
 ### Update Personal Information
