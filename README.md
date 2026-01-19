@@ -4,7 +4,7 @@ A modern, fully responsive personal portfolio website showcasing my skills, proj
 
 ## 🔗 Live
 
-Visit the live portfolio: [https://vishalvishwas.gleeze.com](https://vishalvishwas.gleeze.com)
+Visit the live portfolio: [https://www.vishalvishwas.gleeze.com](https://www.vishalvishwas.gleeze.com/)
 
 ## 🌟 Features
 
