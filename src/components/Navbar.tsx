@@ -64,14 +64,16 @@ const Navbar = () => {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'py-4' : 'py-6'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full`}
+        style={{
+          paddingTop: isScrolled ? '1rem' : '1.5rem',
+          paddingBottom: isScrolled ? '1rem' : '1.5rem',
+        }}
         initial={navAnimations.initial}
         animate={navAnimations.animate}
         transition={navAnimations.transition}
       >
-        <div className="container mx-auto px-6">
+        <div className="mx-auto px-6 w-full">
           <div
             className={`flex items-center justify-between transition-all duration-300 ${
               isScrolled
@@ -124,7 +126,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-border/50"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-border/50 relative z-51"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
