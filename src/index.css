@@ -272,6 +272,23 @@
     scroll-behavior: auto;
   }
 
+  /* Ensure navbar is always visible on mobile */
+  nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 50 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Add safe area inset for notches */
+  body {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+
   /* Reduce animations on mobile */
   .animate-float,
   .animate-float-reverse,
