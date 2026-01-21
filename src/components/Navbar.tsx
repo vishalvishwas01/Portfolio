@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -13,53 +13,23 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
-    // Throttle scroll event on mobile
-    let scrollTimeout: NodeJS.Timeout;
-    const throttledScroll = () => {
-      if (isMobile) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(handleScroll, 100);
-      } else {
-        handleScroll();
-      }
-    };
-
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', throttledScroll);
-      window.removeEventListener('resize', checkMobile);
-      clearTimeout(scrollTimeout);
-    };
-  }, [isMobile]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     if (href === '#') {
-      window.scrollTo({ top: 0, behavior: isMobile ? 'auto' : 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      document.querySelector(href)?.scrollIntoView({ behavior: isMobile ? 'auto' : 'smooth' });
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const navAnimations = useMemo(() => ({
-    initial: isMobile ? { opacity: 0 } : { y: -100 },
-    animate: isMobile ? { opacity: 1 } : { y: 0 },
-    transition: isMobile ? { duration: 0.3 } : { duration: 0.5 },
-  }), [isMobile]);
 
   return (
     <>
@@ -67,9 +37,9 @@ const Navbar = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? 'py-4' : 'py-6'
         }`}
-        initial={navAnimations.initial}
-        animate={navAnimations.animate}
-        transition={navAnimations.transition}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-6">
           <div
@@ -87,7 +57,7 @@ const Navbar = () => {
                 handleNavClick('#');
               }}
               className="text-xl font-display font-bold gradient-text"
-              whileHover={!isMobile ? { scale: 1.05 } : {}}
+              whileHover={{ scale: 1.05 }}
             >
               Vishal
             </motion.a>
@@ -116,8 +86,8 @@ const Navbar = () => {
               href="https://mail.google.com/mail/?view=cm&to=vishalvishwas7082@gmail.com"
               target="_blank"
               className="hidden md:block px-5 py-2 rounded-full bg-primary text-primary-foreground font-medium hover:shadow-lg hover:shadow-primary/30 transition-all"
-              whileHover={!isMobile ? { scale: 1.05 } : {}}
-              whileTap={!isMobile ? { scale: 0.95 } : {}}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Hire Me
             </motion.a>
@@ -141,9 +111,8 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
           >
-            <div className="absolute inset-0 bg-background/95" />
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
             <motion.div
               className="relative flex flex-col items-center justify-center h-full gap-8"
               initial={{ opacity: 0, y: 20 }}
@@ -161,7 +130,7 @@ const Navbar = () => {
                   className="text-2xl font-display font-medium text-foreground hover:text-primary transition-colors"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: index * 0.1 }}
                 >
                   {link.name}
                 </motion.a>
@@ -172,7 +141,7 @@ const Navbar = () => {
                 className="mt-4 px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.5 }}
               >
                 Hire Me
               </motion.a>
