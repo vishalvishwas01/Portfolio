@@ -230,6 +230,42 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
 }
+
+/* Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Disable animations in Safari to prevent crashes */
+  * {
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+
+  /* Reduce motion in Safari */
+  @media (prefers-reduced-motion: no-preference) {
+    .gradient-orb,
+    .animate-float,
+    .animate-float-reverse {
+      animation: none !important;
+    }
+  }
+
+  /* Optimize backdrop filter for Safari */
+  .card-glow {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
 /* Mobile performance optimizations */
 @media (max-width: 768px) {
   html {

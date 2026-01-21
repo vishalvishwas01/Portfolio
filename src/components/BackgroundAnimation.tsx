@@ -13,6 +13,7 @@ interface Particle {
 const BackgroundAnimation = () => {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -20,11 +21,16 @@ const BackgroundAnimation = () => {
       setIsMobile(mobile);
     };
 
+    // Detect Safari
+    const userAgent = navigator.userAgent.toLowerCase();
+    const safari = /safari/.test(userAgent) && !/chrome|edge|firefox/.test(userAgent);
+    setIsSafari(safari);
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // Reduce particle count on mobile (10 instead of 50)
-    const particleCount = isMobile ? 10 : 50;
+    // Reduce particle count on mobile and Safari (10 instead of 50)
+    const particleCount = isMobile || safari ? 10 : 50;
     const newParticles: Particle[] = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -69,8 +75,8 @@ const BackgroundAnimation = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Gradient orbs - disable on mobile for better performance */}
-      {!isMobile && (
+      {/* Gradient orbs - disable on mobile and Safari for better performance */}
+      {!isMobile && !isSafari && (
         <>
           <motion.div
             className="gradient-orb w-[600px] h-[600px] -top-48 -left-48"
@@ -119,8 +125,8 @@ const BackgroundAnimation = () => {
       {/* Floating particles - reduced count on mobile */}
       {particleElements}
 
-      {/* Grid overlay - disable on mobile */}
-      {!isMobile && (
+      {/* Grid overlay - disable on mobile and Safari */}
+      {!isMobile && !isSafari && (
         <div 
           className="absolute inset-0 opacity-[0.02]"
           style={{
