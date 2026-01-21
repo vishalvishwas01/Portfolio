@@ -230,3 +230,47 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
 }
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Reduce animations on mobile */
+  .animate-float,
+  .animate-float-reverse,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+
+  /* Disable blur effects on mobile */
+  .card-glow,
+  .gradient-orb {
+    backdrop-filter: none;
+  }
+
+  /* Reduce shadow complexity */
+  .glow-border,
+  .social-link,
+  .hero-button {
+    box-shadow: none !important;
+  }
+
+  /* Optimize transitions */
+  .skill-badge,
+  .project-card-image,
+  .hero-button-outline {
+    transition: opacity 0.2s !important;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
