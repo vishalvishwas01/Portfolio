@@ -67,7 +67,6 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
-    padding-top: 4rem;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -230,108 +229,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
-}
-
-/* Safari-specific fixes */
-@supports (-webkit-touch-callout: none) {
-  html {
-    scroll-behavior: smooth;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  body {
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  /* Disable animations in Safari to prevent crashes */
-  * {
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-  }
-
-  /* Reduce motion in Safari */
-  @media (prefers-reduced-motion: no-preference) {
-    .gradient-orb,
-    .animate-float,
-    .animate-float-reverse {
-      animation: none !important;
-    }
-  }
-
-  /* Optimize backdrop filter for Safari */
-  .card-glow {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-  }
-}
-
-/* Navbar fixes for all devices */
-nav {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 50 !important;
-  transform: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  width: 100% !important;
-}
-
-/* Mobile performance optimizations */
-@media (max-width: 768px) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  /* Add safe area inset for notches */
-  body {
-    padding-top: max(0.5rem, env(safe-area-inset-top));
-  }
-
-  /* Reduce animations on mobile */
-  .animate-float,
-  .animate-float-reverse,
-  .animate-pulse-glow {
-    animation: none !important;
-  }
-
-  /* Disable blur effects on mobile */
-  .card-glow,
-  .gradient-orb {
-    backdrop-filter: none;
-  }
-
-  /* Reduce shadow complexity */
-  .glow-border,
-  .social-link,
-  .hero-button {
-    box-shadow: none !important;
-  }
-
-  /* Optimize transitions */
-  .skill-badge,
-  .project-card-image,
-  .hero-button-outline {
-    transition: opacity 0.2s !important;
-  }
-
-  /* Ensure mobile menu button stays visible above mobile menu overlay */
-  button[class*="md:hidden"] {
-    position: relative !important;
-    z-index: 51 !important;
-  }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
