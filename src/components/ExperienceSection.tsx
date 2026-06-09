@@ -18,6 +18,21 @@ const experiences: Experience[] = [
   {
     id: 1,
     role: 'Full Stack Apprentice',
+    company: 'Pinnacleway Biz',
+    location: 'Gurugram, India',
+    duration: 'April 2026 – Present',
+    description: [
+      'Developed full-stack features using NestJS, implementing secure authentication, authorization, and admin management modules.',
+      'Designed and documented 20+ REST APIs with Swagger and optimized SQL queries for efficient data operations.',
+      'Built reusable UI components and maintained component documentation using Storybook across multiple modules.',
+      'Implemented real-time secure messaging with WebSockets and contributed to CI/CD pipelines in a 100k+ line enterprise codebase.',
+    ],
+    technologies: ['React', 'Nest.Js', 'Tailwind CSS', 'Express.js', 'MongoDB', 'Vercel', 'PostgreSQL', 'Storybook', 'swagger.io','github actions',],
+    type: 'work',
+  },
+  {
+    id: 1,
+    role: 'Full Stack Apprentice',
     company: 'Xeltratech',
     location: 'Noida, India',
     duration: 'January 2025 – April 2025',
