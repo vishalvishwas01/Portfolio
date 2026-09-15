@@ -22,21 +22,21 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'Technologies',
     icon: Server,
-    skills: ['React.js', 'Next.js', 'Nest.Js', 'Flask', 'FastAPI', 'Node.js', 'Express', 'MERN', 'Framer Motion', 'Material UI', 'Bootstrap', 'JWT', 'WebSockets', 'RESTful API', 'Git','Lovable'],
+    skills: ['React.js', 'Next.js', 'Nest.Js', 'Flask', 'FastAPI', 'Node.js', 'Express', 'MERN', 'Framer Motion', 'Material UI', 'Bootstrap', 'JWT', 'WebSockets', 'RESTful API', 'Git','AI/ML', 'RAG', 'LangChain', 'OpenAI API'],
     colorClass: 'text-skill-backend',
     badgeClass: 'skill-badge-backend',
   },
   {
     title: 'Database',
     icon: Database,
-    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase'],
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis', 'Neo4j', 'Supabase'],
     colorClass: 'text-skill-database',
     badgeClass: 'skill-badge-database',
   },
   {
     title: 'Cloud & DevOps',
     icon: Cloud,
-    skills: ['AWS S3', 'AWS EC2', 'AWS Lambda', 'CI/CD Pipeline', 'GitHub Actions', 'Docker', 'Vercel'],
+    skills: ['AWS S3', 'AWS EC2', 'AWS Lambda', 'CI/CD Pipeline', 'GitHub Actions', 'GitLab' ,'Docker', 'Vercel'],
     colorClass: 'text-skill-tools',
     badgeClass: 'skill-badge-tools',
   },
@@ -114,7 +114,7 @@ const SkillsSection = () => {
             </h3>
           </div>
           <div className="flex flex-wrap gap-4 justify-center">
-            {['Object-Oriented Programming (OOPs)', 'Database Management Systems (DBMS)'].map((course, index) => (
+            {['Object-Oriented Programming (OOPs)', 'Database Management Systems (DBMS)', 'Data Structures and Algorithms', 'SDLC', 'Debugging and Testing'].map((course, index) => (
               <motion.span
                 key={course}
                 className="px-4 py-2 rounded-full text-sm bg-primary/10 text-primary border border-primary/20"
