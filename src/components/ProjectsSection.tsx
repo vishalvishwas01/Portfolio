@@ -6,6 +6,7 @@ import DataVine from '@/assets/DataVine.png';
 import BridgeTalk from '@/assets/BridgeTalk.png';
 import FileWhisper from '@/assets/FileWhisper.png';
 import TaskManager from '@/assets/TaskManager.png';
+import Hallguard from '@/assets/Hallguard.png';
 
 interface Project {
   id: number;
@@ -21,6 +22,20 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'HallGuard',
+    description: 'Data loss prevention (DLP) tool that monitors and prevents sensitive data leaks in real-time in chatgpt, claude, gmail, whatsapp, etc. Ensuring compliance with data protection regulations.',
+    image: Hallguard,
+    tags: ['Python', 'Machine learning', 'Numpy', 'Pandas', 'React.Js', 'MongoDB', 'AWS', 'CI/CD', 'Docker', 'Tailwind CSS', 'Material UI', 'Framer'],
+    liveUrl: 'https://hallguard.in',
+    githubUrl: 'https://github.com/vishalvishwas01/HallGuard',
+    highlights: [
+      'Engineered a cloud-connected, multi-component service architecture across 3 tiers (browser, backend API, MongoDB) with health/readiness checks, async retry queues, and graceful shutdown, improving service reliability and production resilience.',
+      'Designed a privacy-preserving data pipeline with schema-validated API boundaries, rate limiting, and redaction controls, reducing raw-data server exposure while enforcing security, privacy, and data-minimization practices.',
+      'Built a signed intelligence delivery system using Ed25519 and SHA-256 integrity validation with rollback checks, enabling secure software updates across browser clients.'
+    ],
+  },
+  {
+    id: 2,
     title: 'Datavine Custom Form Builder',
     description: 'A MERN stack form builder used to create and share custom forms, supporting real-time tracking for hundreds of responses through public access links.',
     image: DataVine,
@@ -34,7 +49,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'BridgeTalk Multilingual Chat',
     description: 'A real-time chat application with automatic multi-language translation for 6+ languages, enabling seamless interaction between users globally.',
     image: BridgeTalk,
@@ -48,7 +63,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: 'File Whisper AI Dashboard',
     description: 'A full-stack AI dashboard for document interaction, enabling users to chat with PDF/DOCX files with over 95% response accuracy using Hugging Face AI API.',
     image: FileWhisper,
@@ -62,7 +77,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Multi Task Manager',
     description: 'Multi Task Manager, a web application built to simplify and streamline daily task management through an intuitive and responsive interface.',
     image: TaskManager,

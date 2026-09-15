@@ -112,12 +112,12 @@ const AboutSection = () => {
                 dashboards, and scalable form builders. I'm proficient in AWS
                 services, Docker, and CI/CD pipelines.
               </p>
-              <p>
+              {/* <p>
                 I recently completed my Full Stack Apprenticeship at Xeltratech,
                 where I designed IT service websites, streamlined modular
                 architectures, and maintained deployment workflows with 99.9%
                 uptime.
-              </p>
+              </p> */}
             </div>
 
             {/* Stats */}
