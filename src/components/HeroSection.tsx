@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
+import { track } from '@vercel/analytics';
 
 const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -93,7 +94,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
           >
             {[
-              { icon: FileText, href: "https://drive.google.com/file/d/1jSumxSTVYpIl6qI1YrjQuqf91MTgy3X5/view?usp=sharing" },
+              { icon: FileText, href: "/resume.pdf" },
               { icon: Github, href: "https://github.com/vishalvishwas01" },
               { icon: Linkedin, href: "https://linkedin.com/in/vishalvishwas" },
               {
@@ -109,6 +110,11 @@ const HeroSection = () => {
                 target={social.icon === Mail && isMobile ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 className="social-link"
+                 onClick={() => {
+                  if (social.icon === FileText) {
+                    track("resume_click");
+                  }
+                }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >

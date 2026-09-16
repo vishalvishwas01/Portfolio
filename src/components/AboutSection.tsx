@@ -13,6 +13,7 @@ import {
   FileText
 } from "lucide-react";
 import { Copy } from "./ui/Copy";
+import { track } from "@vercel/analytics/react";
 
 const AboutSection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -48,7 +49,7 @@ const AboutSection = () => {
       icon: FileText,
       label: "Resume",
       value: "Download Resume",
-      href: "https://drive.google.com/file/d/1jSumxSTVYpIl6qI1YrjQuqf91MTgy3X5/view?usp=sharing",
+      href: "/resume.pdf",
     },
     {
       icon: Github,
@@ -163,6 +164,11 @@ const AboutSection = () => {
               <motion.div key={index} className="flex items-center gap-2">
                 <motion.a
                   href={contact.href}
+                  onClick={() => {
+                    if (contact.label === "Resume") {
+                      track("resume_click");
+                    }
+                  }}
                   target={
                     contact.label === "Email" && isMobile ? undefined : "_blank"
                   }
