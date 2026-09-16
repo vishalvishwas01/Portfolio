@@ -10,7 +10,7 @@ import {
   Linkedin,
   Mail,
   Phone,
-  Globe,
+  FileText
 } from "lucide-react";
 import { Copy } from "./ui/Copy";
 
@@ -43,6 +43,12 @@ const AboutSection = () => {
       label: "Phone",
       value: "+91-8851565291",
       href: "tel:+918851565291",
+    },
+    {
+      icon: FileText,
+      label: "Resume",
+      value: "Download Resume",
+      href: "https://drive.google.com/file/d/1jSumxSTVYpIl6qI1YrjQuqf91MTgy3X5/view?usp=sharing",
     },
     {
       icon: Github,

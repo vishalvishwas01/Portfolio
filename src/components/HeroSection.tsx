@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
 
 const HeroSection = () => {
@@ -93,6 +93,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
           >
             {[
+              { icon: FileText, href: "https://drive.google.com/file/d/1jSumxSTVYpIl6qI1YrjQuqf91MTgy3X5/view?usp=sharing" },
               { icon: Github, href: "https://github.com/vishalvishwas01" },
               { icon: Linkedin, href: "https://linkedin.com/in/vishalvishwas" },
               {
