@@ -22,7 +22,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'Technologies',
     icon: Server,
-    skills: ['React.js', 'Next.js', 'Nest.Js', 'Flask', 'FastAPI', 'Node.js', 'Express', 'MERN', 'Framer Motion', 'Material UI', 'Bootstrap', 'JWT', 'WebSockets', 'RESTful API', 'Git','AI/ML', 'RAG', 'LangChain', 'OpenAI API'],
+    skills: ['React.js', 'Angular.js', 'Next.js', 'Nest.Js', 'Flask', 'FastAPI', 'Node.js', 'Express', 'MERN', 'Framer Motion', 'Material UI', 'Bootstrap', 'JWT', 'WebSockets', 'RESTful API', 'Git','AI/ML', 'RAG', 'LangChain', 'OpenAI API'],
     colorClass: 'text-skill-backend',
     badgeClass: 'skill-badge-backend',
   },
