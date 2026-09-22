@@ -35,7 +35,7 @@ const experiences: Experience[] = [
     role: 'Full Stack Apprentice',
     company: 'Xeltratech',
     location: 'Noida, India',
-    duration: 'January 2025 – April 2025',
+    duration: 'January 2025 – August 2025',
     description: [
       'Designed and launched an IT service website using React, showcasing 3+ projects while following coding standards',
       'Streamlined modular architecture and navigation flow, improving scalability and maintainability by 30%',
