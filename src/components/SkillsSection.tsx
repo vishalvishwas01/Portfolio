@@ -36,7 +36,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'Cloud & DevOps',
     icon: Cloud,
-    skills: ['AWS S3', 'AWS EC2', 'AWS Lambda', 'CI/CD Pipeline', 'GitHub Actions', 'GitLab' ,'Docker', 'Vercel'],
+    skills: ['AWS S3', 'AWS EC2', 'AWS Lambda', 'CI/CD Pipeline', 'GitHub Actions', 'GitLab' ,'Docker', 'Vercel', 'Redis'],
     colorClass: 'text-skill-tools',
     badgeClass: 'skill-badge-tools',
   },
