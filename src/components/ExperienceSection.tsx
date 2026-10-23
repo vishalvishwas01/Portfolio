@@ -17,6 +17,19 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 1,
+    role: 'Software engineer intern',
+    company: 'Supercode',
+    location: 'Bengaluru, India',
+    duration: 'August 2026 – Present',
+    description: [
+      'Engineered a production-grade rate-limiting microservice for Aether handling 10,000 requests/sec, blocking 43% of malicious traffic through DDoS mitigation using Node.js, Python, Flask, Docker, and Kubernetes, with Redis caching for request queueing and batch-and-flush processing.',
+      'Reduced API latency by 90% from 10 seconds to under 1 second by optimizing authentication and request-processing workflows, deploying scalable services with Kubernetes and multithreading',
+    ],
+    technologies: ['Node.Js', 'Nest.Js', 'Express.js', 'Redis', 'MongoDB', 'PostgreSQL', 'Docker', 'Kubernetes'],
+    type: 'work',
+  },
+  {
+    id: 2,
     role: 'Full Stack Apprentice',
     company: 'Pinnacleway Biz',
     location: 'Gurugram, India',
@@ -31,7 +44,7 @@ const experiences: Experience[] = [
     type: 'work',
   },
   {
-    id: 2,
+    id: 3,
     role: 'Full Stack Apprentice',
     company: 'Xeltratech',
     location: 'Noida, India',
@@ -46,7 +59,7 @@ const experiences: Experience[] = [
     type: 'work',
   },
   {
-    id: 3,
+    id: 4,
     role: 'Master of Computer Applications (MCA)',
     company: 'Amity University',
     location: 'India',
@@ -57,19 +70,6 @@ const experiences: Experience[] = [
       'Coursework includes OOPs and Database Management Systems (DBMS)',
     ],
     technologies: ['Python', 'JavaScript', 'DBMS', 'OOPs'],
-    type: 'education',
-  },
-  {
-    id: 4,
-    role: 'Bachelor of commerce (B.Com)',
-    company: 'University of Delhi',
-    location: 'India',
-    duration: 'July 2019 – July 2022',
-    description: [
-      'Pursuing B.Com with focus on commerce and business studies',
-      'Maintaining a CGPA of 7.51/10',
-    ],
-    technologies: [],
     type: 'education',
   },
 ];
