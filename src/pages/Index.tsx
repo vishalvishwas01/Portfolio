@@ -175,7 +175,7 @@ const reducedAboutCopyItemVariants: Variants = {
 const Index = () => {
   const scrollTo = useSmoothScroll();
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.2 });
   const heroY = useTransform(scrollYProgress, [0, 0.22], [0, -90]);
   const aboutRef = useRef<HTMLElement>(null);
@@ -188,17 +188,41 @@ const Index = () => {
   const aboutEmblemY = useTransform(aboutEntryProgress, [0, 1], [30, 0]);
   const [activeSection, setActiveSection] = useState<SectionId>('home');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const lastScrollY = useRef(0);
+  const scrollIntent = useRef(0);
   const [capability, setCapability] = useState<keyof typeof capabilityGroups>('Build');
   const capabilitiesRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: capabilitiesScrollProgress } = useScroll({ target: capabilitiesRef, offset: ['start start', 'end end'] });
   const capabilitiesRailPosition = useTransform(capabilitiesScrollProgress, [0, 1], ['0%', '100%']);
   const [activeExperience, setActiveExperience] = useState(0);
+  const [projectsExpanded, setProjectsExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
   const journeyRef = useRef<HTMLElement>(null);
   const { scrollYProgress: journeyEntryProgress } = useScroll({ target: journeyRef, offset: ['start end', 'start 25%'] });
   const { scrollYProgress: journeyProgress } = useScroll({ target: journeyRef, offset: ['start 0.8', 'end 0.3'] });
   const journeyLineProgress = useSpring(journeyProgress, { stiffness: 100, damping: 24, mass: 0.2 });
   const journeyProgressClip = useTransform(journeyEntryProgress, [0, 1], ['inset(0 100% 0 0%)', 'inset(0 0% 0 0%)']);
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = lastScrollY.current;
+    const direction = latest - previous;
+    const hero = document.getElementById('home');
+    const heroExitPoint = hero ? hero.offsetTop + hero.offsetHeight * 0.5 : window.innerHeight * 0.5;
+
+    if (latest <= heroExitPoint) {
+      scrollIntent.current = 0;
+      setHeaderHidden(false);
+    } else if (direction > 0.5) {
+      scrollIntent.current = Math.max(0, scrollIntent.current) + direction;
+      if (scrollIntent.current > 18) setHeaderHidden(true);
+    } else if (direction < -0.5) {
+      scrollIntent.current = Math.min(0, scrollIntent.current) + direction;
+      if (scrollIntent.current < -8) setHeaderHidden(false);
+    }
+
+    lastScrollY.current = latest;
+  });
 
   const syncCapabilityToScroll = useCallback((latest: number) => {
     const nextCapability: keyof typeof capabilityGroups = latest < 0.42 ? 'Build' : latest < 0.76 ? 'Shape' : 'Ship';
@@ -234,13 +258,13 @@ const Index = () => {
   };
 
   return (
-    <div className="site-shell">
+    <div className={`site-shell${headerHidden ? ' nav-hidden' : ''}`}>
       <motion.div className="scroll-progress" style={{ scaleX: progress }} />
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="paper-grid" aria-hidden="true" />
 
-      <header className="site-header">
+      <motion.header className="site-header" animate={{ y: headerHidden && !mobileOpen ? -130 : 0 }} transition={{ duration: headerHidden && !mobileOpen ? 1.1 : 0.58, ease: headerHidden && !mobileOpen ? [0.4, 0, 0.2, 1] : [0.16, 1, 0.3, 1] }}>
         <div className="nav-wrap">
           <a className="brand" href="#home" onClick={(event) => { event.preventDefault(); scrollTo('home'); }}>
             <span className="brand-mark">V</span>
@@ -258,7 +282,7 @@ const Index = () => {
           </a>
           <button className="menu-trigger" aria-label="Open navigation" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(true)}><Menu size={21} /></button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {mobileOpen && (
@@ -420,13 +444,22 @@ const Index = () => {
           <motion.div className="section-intro work-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
             <span className="section-index">04 / Selected projects</span><h2>Proof, in <em>public.</em></h2><p>Real products, real constraints, and a few rabbit holes worth keeping.</p>
           </motion.div>
-          <div className="project-stack">
-            {projects.map((project, index) => (
-              <motion.article className={`project-card tone-${project.tone}`} key={project.title} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={fadeUp} transition={{ delay: index * 0.04 }}>
+          <div className="project-stack" id="project-list">
+            <AnimatePresence initial={false} mode="popLayout">
+            {(projectsExpanded ? projects : projects.slice(0, 1)).map((project, index) => (
+              <motion.article layout className={`project-card tone-${project.tone}`} key={project.title} initial="hidden" animate="visible" exit={{ opacity: 0, y: -18, filter: 'blur(4px)' }} whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={fadeUp} transition={{ delay: index * 0.04, layout: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}>
                 <div className="project-image-wrap"><img src={project.image} alt={`${project.title} product preview`} /><div className="project-image-wash" /><span className="project-number">{project.number}</span>{project.live && <a href={project.live} target="_blank" rel="noreferrer" className="image-link" aria-label={`Open ${project.title}`}><ExternalLink size={18} /></a>}</div>
                 <div className="project-info"><div className="project-type">{project.type}</div><h3>{project.title}</h3><p>{project.description}</p><div className="project-outcome"><Check size={15} /> {project.outcome}</div><div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><div className="project-links">{project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ArrowUpRight size={15} /></a>}<a href={project.github} target="_blank" rel="noreferrer"><Github size={15} /> Source</a></div></div>
               </motion.article>
             ))}
+            </AnimatePresence>
+          </div>
+          <div className="projects-expand">
+            <button className="projects-toggle" type="button" aria-expanded={projectsExpanded} aria-controls="project-list" onClick={() => setProjectsExpanded((expanded) => !expanded)}>
+              <span>{projectsExpanded ? 'Show less' : 'View more projects'}</span>
+              <ChevronDown size={16} className={projectsExpanded ? 'is-open' : ''} />
+            </button>
+            <span className="projects-expand-note">{projectsExpanded ? 'Showing all selected work' : `${projects.length - 1} more projects waiting`}</span>
           </div>
         </section>
 
