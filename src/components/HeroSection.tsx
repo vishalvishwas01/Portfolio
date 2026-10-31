@@ -71,7 +71,7 @@ const HeroSection = () => {
             transition={{ delay: 0.6 }}
           >
             Building scalable web applications with React, Next.js, Node.js, and
-            cloud technologies like AWS. MCA student at Amity University with
+            cloud technologies like AWS. MCA graduate at Amity University with
             expertise in MERN stack and AI-powered solutions.
           </motion.p>
 

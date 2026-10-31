@@ -1,239 +1,194 @@
-# Vishal Vishwas - Full Stack Developer Portfolio
+<div align="center">
 
-A modern, fully responsive personal portfolio website showcasing my skills, projects, and experience as a Full Stack Developer. Built with React, TypeScript, and Tailwind CSS with smooth animations and interactive components.
+# Vishal Vishwas
 
-## 🔗 Live
+### Full-Stack Engineer · Distributed Systems · AI/ML Builder
 
-Visit the live portfolio: [https://www.vishalvishwas.gleeze.com](https://www.vishalvishwas.gleeze.com/)
+<p>I build reliable, human-centered products across the browser, API, data, and cloud layers.</p>
 
-## 🌟 Features
+<p>
+  <a href="https://www.vishalvishwas.gleeze.com/"><img src="https://img.shields.io/badge/🌐_Portfolio-Visit_live_site-0f172a?style=for-the-badge&labelColor=14b8a6" alt="Open portfolio" /></a>
+  <a href="https://raw.githubusercontent.com/vishalvishwas01/Portfolio/main/public/resume.pdf"><img src="https://img.shields.io/badge/📄_Resume-Download-0f172a?style=for-the-badge&labelColor=8b5cf6" alt="Download resume" /></a>
+  <a href="mailto:vishalvishwas7082@gmail.com"><img src="https://img.shields.io/badge/✉️_Email-Get_in_touch-0f172a?style=for-the-badge&labelColor=f97316" alt="Email Vishal" /></a>
+</p>
 
-- **Responsive Design**: Fully responsive layout that works seamlessly on mobile, tablet, and desktop devices
-- **Smooth Animations**: Engaging animations powered by Framer Motion for a modern user experience
-- **Interactive Sections**:
-  - Hero section with social media links and CTA buttons
-  - About section with contact information and statistics
-  - Skills section with categorized technologies (Frontend, Backend, Database, Cloud & DevOps)
-  - Featured projects carousel with live demos and GitHub links
-  - Experience and education timeline
-  - Smooth scroll navigation
-- **Modern UI**: Built with shadcn/ui components and Tailwind CSS
-- **Dark Mode Ready**: Uses CSS custom properties for easy theme customization
-- **Performance Optimized**: Fast loading with Vite and optimized animations
+<p>
+  <a href="https://github.com/vishalvishwas01"><img src="https://img.shields.io/badge/GitHub-vishalvishwas01-181717?style=flat-square&logo=github" alt="GitHub" /></a>
+  <a href="https://www.linkedin.com/in/vishalvishwas/"><img src="https://img.shields.io/badge/LinkedIn-Vishal_Vishwas-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn" /></a>
+  <img src="https://img.shields.io/badge/Location-India-334155?style=flat-square" alt="Location: India" />
+</p>
 
-## 🛠️ Tech Stack
+</div>
 
-**Frontend:**
-- React 18.3
-- TypeScript
-- Tailwind CSS 3
-- Framer Motion (animations)
-- Lucide React (icons)
-- Lenis (smooth scrolling)
+<details open>
+<summary><b>⚡ At a glance</b></summary>
 
-**UI Components:**
-- shadcn/ui
-- Radix UI primitives
+| | | | |
+|:---:|:---:|:---:|:---:|
+| **10k+** | **90%** | **43%** | **8.63/10** |
+| requests/sec handled | API latency reduction | malicious traffic blocked | MCA CGPA |
 
-**Development Tools:**
-- Vite (build tool)
-- Vitest (testing)
-- ESLint & TypeScript ESLint (code quality)
-- PostCSS & Autoprefixer
+> Currently a Software Engineer Intern at **Supercode**, where I work on production-grade services, rate limiting, DDoS mitigation, and performance-critical systems.
 
-**Hosting:**
-- Vercel
+</details>
 
-## 📦 Installation
+## 👋 About me
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn package manager
+I’m Vishal, a full-stack engineer and MCA (AI/ML) candidate who enjoys turning ambiguous product problems into resilient, measurable software. My sweet spot is the space between polished interfaces and dependable backend systems: typed React experiences, secure APIs, real-time workflows, data modeling, and cloud delivery.
 
-### Steps
+I care about performance, privacy, developer experience, and shipping work that holds up in production.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/vishalvishwas01/Portfolio.git
-   cd Portfolio
-   ```
+## 🧭 What I bring
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+<table>
+<tr>
+<td width="33%" valign="top">
 
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-   The application will open at `http://localhost:8080`
+### Product-minded frontend
 
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+Responsive React, Next.js, Angular, Tailwind CSS, Framer Motion, accessibility, and thoughtful loading/error/empty states.
 
-5. **Preview production build**
-   ```bash
-   npm run preview
-   ```
+</td>
+<td width="33%" valign="top">
 
-## 🚀 Usage
+### Reliable backend systems
 
-### Development
+Node.js, Express, NestJS, Python, FastAPI, REST, WebSockets, queues, authentication, rate limiting, and observability-aware APIs.
 
-```bash
-# Start development server with hot reload
-npm run dev
+</td>
+<td width="33%" valign="top">
 
-# Run linter
-npm run lint
+### Cloud & delivery
 
-# Run tests
-npm run test
+AWS, Docker, Kubernetes, CI/CD, GitHub Actions, GitLab, Vercel, MongoDB, PostgreSQL, MySQL, Redis, and secure releases.
 
-# Watch tests
-npm run test:watch
-```
+</td>
+</tr>
+</table>
 
-### Production
+## 🚀 Selected work
 
-```bash
-# Build optimized production bundle
-npm run build
+<table>
+<tr>
+<td width="50%" valign="top">
 
-# Preview production build locally
-npm run preview
-```
+### [HallGuard](https://hallguard.in) · DLP for AI workflows
 
-## 🎨 Customization
+Local-first browser extension and cloud dashboard that helps prevent sensitive-data leaks across AI tools.
 
-### Update Personal Information
+- 4-layer detection engine with a 16-feature classifier
+- Scans up to 256 KiB locally with zero network round trips
+- React/Vite + Plasmo + Node/Express/MongoDB + AWS/Vercel
+- JWT/RBAC and Ed25519/SHA-256 signed updates
 
-1. **HeroSection.tsx** - Update name, title, and description
-   ```tsx
-   <span className="text-foreground">Your Name</span>
-   ```
+[Source code](https://github.com/vishalvishwas01/HallGuard)
 
-2. **AboutSection.tsx** - Update bio, contact info, and statistics
-   ```tsx
-   const contactInfo = [
-     { icon: Mail, label: 'Email', value: 'your-email@example.com', ... }
-   ];
-   ```
+</td>
+<td width="50%" valign="top">
 
-3. **SkillsSection.tsx** - Modify skill categories and technologies
-4. **ProjectsSection.tsx** - Add/update featured projects with details
-5. **ExperienceSection.tsx** - Update work experience and education
+### [Datavine](https://datavine.gleeze.com) · Form builder
 
-### Add Profile Picture
+Full-stack form creation and response-tracking product built for fast publishing and reliable submissions.
 
-Place your profile image in the `src/assets/` folder and update the import in [`HeroSection.tsx`](src/components/HeroSection.tsx):
+- Next.js 15, MongoDB, Mongoose, Tailwind, Material UI
+- Google OAuth and Razorpay order verification
+- 5+ API routes and optimized data models
+- Reduced form creation time by 40%
 
-```tsx
-import profileImage from '@/assets/your-image.jpg';
-```
+[Source code](https://github.com/vishalvishwas01/Datavine)
 
-### Modify Colors
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
-Edit CSS variables in [`src/index.css`](src/index.css):
+### [BridgeTalk](https://bridgetalk.gleeze.com) · Multilingual chat
 
-```css
-:root {
-  --primary: 175 80% 50%;      /* Cyan */
-  --accent: 280 70% 60%;       /* Purple */
-  --background: 220 20% 5%;    /* Dark */
-  --foreground: 210 40% 98%;   /* Light */
-}
-```
+Real-time chat with automatic translation across 6+ languages, media sharing, and Firebase-backed auth/storage.
 
-## 🔧 Available Scripts
+- Validated with 1,000+ messages
+- Sub-2-second message delivery in testing
+- React + Node.js + Firebase + Tailwind + Vercel
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run build:dev` | Build for development |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
-| `npm run test` | Run tests once |
-| `npm run test:watch` | Run tests in watch mode |
+[Source code](https://github.com/vishalvishwas01/BridgeTalk)
 
-## 📱 Sections Overview
+</td>
+<td width="50%" valign="top">
 
-### Hero Section
-- Welcome message with animated text
-- Call-to-action buttons
-- Social media links (GitHub, LinkedIn, Email)
-- Animated profile image with floating badge
-- Scroll indicator
+### [File Whisper](https://filewhisper.gleeze.com) · GenAI document chat
 
-### About Section
-- Professional bio
-- Key statistics (projects, education, CGPA)
-- Contact information with live links
-- Interactive hover effects
+AI dashboard for asking questions over PDF/DOCX files with authenticated, per-user storage.
 
-### Skills Section
-- **Languages**: Python, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS
-- **Technologies**: React, Next.js, Node.js, Express, MERN stack, etc.
-- **Database**: MySQL, PostgreSQL, MongoDB, Firebase
-- **Cloud & DevOps**: AWS, Docker, CI/CD, GitHub Actions, Vercel
-- **Coursework**: OOPs, DBMS
+- Hugging Face API with structured document context
+- 95%+ response accuracy in project testing
+- AWS Lambda + S3, JWT, Google OAuth
 
-### Projects Section
-Carousel showcasing 4 featured projects:
-1. **Datavine** - MERN form builder with payment integration
-2. **BridgeTalk** - Multilingual real-time chat application
-3. **File Whisper AI** - AI-powered document interaction dashboard
-4. **Task Manager** - Task management application
+[Source code](https://github.com/vishalvishwas01/FileWhisperPublic)
 
-Each project includes:
-- Live demo link
-- GitHub repository link
-- Project highlights
-- Technology tags
+</td>
+</tr>
+</table>
 
-### Experience Section
-- Timeline layout with alternating design
-- Work experience at Xeltratech
-- Education at Amity University
-- Detailed descriptions and technologies used
+<details>
+<summary><b>More projects</b></summary>
 
-### Footer
-- Social media links
-- Copyright information
-- Scroll to top button
+- **[Multi Task Manager](https://task-manager-privated.vercel.app/)** — secure CRUD task management with history, due dates, React, Node.js, MongoDB, and Tailwind. [Source code](https://github.com/vishalvishwas01/TaskManager)
+- **This portfolio** — interactive React/Vite experience with Framer Motion, Lenis smooth scrolling, shadcn/ui, and responsive design. [Live site](https://www.vishalvishwas.gleeze.com/)
 
-## 🎯 Performance
+</details>
 
-- **Optimized Animations**: Uses Framer Motion for smooth, GPU-accelerated animations
-- **Lazy Loading**: Sections animate in on scroll using Intersection Observer
-- **Code Splitting**: Vite automatically code-splits for optimal loading
-- **Production Build**: ~150KB gzipped
+## 💼 Experience
 
+| Period | Role | Impact |
+| --- | --- | --- |
+| **Aug 2026 – Present** | **Software Engineer Intern · Supercode** · Bengaluru | Built a 10k requests/sec rate-limiting microservice; blocked 43% of malicious traffic and reduced API latency from 10s to under 1s with Node.js, Python, Flask, Redis, Docker, and Kubernetes. |
+| **Apr 2026 – Aug 2026** | **Full Stack Intern · Pinnacleway** · Gurugram | Implemented NestJS authentication across a 100k+ line codebase, documented 20+ Swagger APIs, and reduced CI/CD deployment time from 30 to 20 minutes. |
+| **Jan 2025 – Apr 2025** | **Full Stack Intern · Xeltratech** · Noida | Shipped 3+ cross-browser React interfaces, built Flutter features with Riverpod, improved maintainability by 30%, and supported 99.9% uptime for Node/Express services. |
 
+## 🧰 Tech stack
 
-## 📞 Contact
+<p>
+  <img src="https://skillicons.dev/icons?i=ts,js,python,go,react,nextjs,angular,flutter,tailwind,nodejs,express,nestjs,fastapi,mongodb,postgres,mysql,redis,firebase,aws,docker,kubernetes,githubactions,git,vercel&perline=9" alt="Technologies: TypeScript, JavaScript, Python, Go, React, Next.js, Angular, Flutter, Tailwind, Node.js, Express, NestJS, FastAPI, MongoDB, PostgreSQL, MySQL, Redis, Firebase, AWS, Docker, Kubernetes, GitHub Actions, Git, Vercel" />
+</p>
 
-- **Email**: [vishalvishwas7082@gmail.com](mailto:vishalvishwas7082@gmail.com)
+<details>
+<summary><b>Detailed skills</b></summary>
 
-- **GitHub**: [github.com/vishalvishwas01](https://github.com/vishalvishwas01)
-- **LinkedIn**: [linkedin.com/in/vishalvishwas](https://linkedin.com/in/vishalvishwas)
+**Languages:** JavaScript, TypeScript, Python, Go, Dart, HTML5, CSS3  
+**Frontend & mobile:** React.js, Next.js, Angular, Flutter, Riverpod, Tailwind CSS, Material UI, Framer Motion  
+**Backend & APIs:** Node.js, Express.js, NestJS, FastAPI, Flask, REST APIs, WebSockets, JWT, OAuth 2.0, BullMQ, RabbitMQ  
+**Data:** SQL, MySQL, PostgreSQL, MongoDB, Redis, Neo4j, Firebase  
+**Cloud & tooling:** AWS, Docker, Kubernetes, GitHub Actions, GitLab CI/CD, Vercel, Git, unit testing, code reviews, Agile/Scrum  
+**AI/ML:** scikit-learn, RAG, LangChain, OpenAI API, Hugging Face APIs
 
-## 📄 License
+</details>
 
-This project is open source and available under the MIT License.
+## 🎓 Education
 
-## 🙏 Acknowledgments
+**Master of Computer Applications (AI/ML)** · Amity University · July 2024 – July 2026  
+CGPA: **8.63/10** · Coursework: OOP, DBMS, Data Structures & Algorithms, SDLC, debugging and testing
 
-- Built with [shadcn/ui](https://ui.shadcn.com/)
-- Animations powered by [Framer Motion](https://www.framer.com/motion/)
-- Icons from [Lucide React](https://lucide.dev/)
-- Smooth scrolling with [Lenis](https://lenis.stroll.io/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
+## 📈 GitHub activity
 
----
+<p align="center">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=vishalvishwas01&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" alt="Vishal's GitHub stats" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vishalvishwas01&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
+</p>
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=vishalvishwas01&theme=tokyonight&hide_border=true" alt="GitHub contribution streak" />
+</p>
 
-**Made with ❤️ by Vishal Vishwas**
+## 🤝 Let’s build something useful
+
+I’m open to conversations about full-stack engineering, backend performance, AI-enabled products, and teams that value ownership and good product thinking.
+
+<p>
+  <a href="mailto:vishalvishwas7082@gmail.com">Email me</a> ·
+  <a href="https://www.linkedin.com/in/vishalvishwas/">Connect on LinkedIn</a> ·
+  <a href="https://www.vishalvishwas.gleeze.com/">Explore my portfolio</a> ·
+  <a href="https://raw.githubusercontent.com/vishalvishwas01/Portfolio/main/public/resume.pdf">Download my resume</a>
+</p>
+
+<div align="center">
+<sub>Designed, built, and continuously improved with React, TypeScript, Tailwind CSS, and a lot of curiosity.</sub>
+</div>

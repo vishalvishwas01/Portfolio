@@ -20,7 +20,7 @@ const experiences: Experience[] = [
     role: 'Software engineer intern',
     company: 'Supercode',
     location: 'Bengaluru, India',
-    duration: 'August 2026 – Present',
+    duration: 'August 2026 - Present',
     description: [
       'Engineered a production-grade rate-limiting microservice for Aether handling 10,000 requests/sec, blocking 43% of malicious traffic through DDoS mitigation using Node.js, Python, Flask, Docker, and Kubernetes, with Redis caching for request queueing and batch-and-flush processing.',
       'Reduced API latency by 90% from 10 seconds to under 1 second by optimizing authentication and request-processing workflows, deploying scalable services with Kubernetes and multithreading',
@@ -33,7 +33,7 @@ const experiences: Experience[] = [
     role: 'Full Stack Apprentice',
     company: 'Pinnacleway Biz',
     location: 'Gurugram, India',
-    duration: 'April 2026 – August 2026',
+    duration: 'April 2026 - August 2026',
     description: [
       'Engineered secure authentication (signup/login, admin management) using NestJS, supporting thousands of user records within a 100k+ line enterprise codebase.',
       'Designed and documented 20+ RESTful APIs using Swagger (OpenAPI), applying SQL query optimization and third-party integrations while maintaining complete technical documentation.',
@@ -48,7 +48,7 @@ const experiences: Experience[] = [
     role: 'Full Stack Apprentice',
     company: 'Xeltratech',
     location: 'Noida, India',
-    duration: 'January 2025 – July 2025',
+    duration: 'January 2025 - July 2025',
     description: [
       'Designed and launched an IT service website using React, showcasing 3+ projects while following coding standards',
       'Streamlined modular architecture and navigation flow, improving scalability and maintainability by 30%',
@@ -63,7 +63,7 @@ const experiences: Experience[] = [
     role: 'Master of Computer Applications (MCA)',
     company: 'Amity University',
     location: 'India',
-    duration: 'July 2024 – July 2026',
+    duration: 'July 2024 - July 2026',
     description: [
       'Pursuing MCA with focus on software development and cloud technologies',
       'Maintaining a CGPA of 8.63/10',
