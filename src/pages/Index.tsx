@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform, type Variants } from 'framer-motion';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform, type Variants } from 'framer-motion';
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -189,11 +189,27 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState<SectionId>('home');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [capability, setCapability] = useState<keyof typeof capabilityGroups>('Build');
+  const capabilitiesRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: capabilitiesScrollProgress } = useScroll({ target: capabilitiesRef, offset: ['start start', 'end end'] });
+  const capabilitiesRailPosition = useTransform(capabilitiesScrollProgress, [0, 1], ['0%', '100%']);
   const [activeExperience, setActiveExperience] = useState(0);
   const [copied, setCopied] = useState(false);
   const journeyRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: journeyEntryProgress } = useScroll({ target: journeyRef, offset: ['start end', 'start 25%'] });
   const { scrollYProgress: journeyProgress } = useScroll({ target: journeyRef, offset: ['start 0.8', 'end 0.3'] });
   const journeyLineProgress = useSpring(journeyProgress, { stiffness: 100, damping: 24, mass: 0.2 });
+  const journeyProgressClip = useTransform(journeyEntryProgress, [0, 1], ['inset(0 100% 0 0%)', 'inset(0 0% 0 0%)']);
+
+  const syncCapabilityToScroll = useCallback((latest: number) => {
+    const nextCapability: keyof typeof capabilityGroups = latest < 0.42 ? 'Build' : latest < 0.76 ? 'Shape' : 'Ship';
+    setCapability((current) => current === nextCapability ? current : nextCapability);
+  }, []);
+
+  useMotionValueEvent(capabilitiesScrollProgress, 'change', syncCapabilityToScroll);
+
+  useEffect(() => {
+    syncCapabilityToScroll(capabilitiesScrollProgress.get());
+  }, [capabilitiesScrollProgress, syncCapabilityToScroll]);
 
   useEffect(() => {
     const ids: SectionId[] = ['home', 'about', 'capabilities', 'journey', 'work', 'education', 'contact'];
@@ -283,7 +299,6 @@ const Index = () => {
           <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.94, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}>
             <div className="visual-label visual-label-top"><span>01 / 05</span><span>Scroll to explore</span></div>
             <div className="portrait-frame">
-              <div className="portrait-scan" />
               <img src={profileImage} alt="Vishal Vishwas" />
               <div className="portrait-overlay" />
               <div className="portrait-caption"><span>Vishal Vishwas</span><span>Engineer / maker</span></div>
@@ -338,21 +353,35 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="capabilities" className="section-pad capabilities-section">
-          <motion.div className="section-intro" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}><span className="section-index">02 / Skills</span><h2>From first sketch<br />to <em>last mile.</em></h2></motion.div>
-          <div className="capability-layout">
-            <div className="capability-tabs" role="group" aria-label="Capability categories">
-              {(Object.keys(capabilityGroups) as (keyof typeof capabilityGroups)[]).map((group, index) => <button key={group} className={capability === group ? 'selected' : ''} aria-pressed={capability === group} onClick={() => setCapability(group)}><span>0{index + 1}</span>{group}<ArrowUpRight size={17} /></button>)}
-              <div className="capability-note"><Terminal size={16} /><span>Always learning,<br />usually building.</span></div>
+        <div className="capabilities-stage" ref={capabilitiesRef}>
+          <section id="capabilities" className="section-pad capabilities-section">
+            <motion.div className="section-intro" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}><span className="section-index">02 / Skills</span><h2>From first sketch<br />to <em>last mile.</em></h2></motion.div>
+            <div className="capability-scroll-rail" aria-hidden="true">
+              <div className="capability-scroll-track">
+                <motion.i style={{ scaleY: capabilitiesScrollProgress }} />
+                <motion.b className="capability-scroll-thumb" style={{ top: capabilitiesRailPosition }} />
+                {(Object.keys(capabilityGroups) as (keyof typeof capabilityGroups)[]).map((group, index) => (
+                  <span key={group} className={`capability-scroll-step capability-scroll-step-${index + 1} ${capability === group ? 'is-active' : ''}`}>
+                    <i /><small>{group}</small>
+                  </span>
+                ))}
+              </div>
+              <span className="capability-scroll-caption">Scroll to progress</span>
             </div>
-            <div className="capability-content"><AnimatePresence mode="wait"><motion.div key={capability} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.28 }}><div className="capability-title"><span>What I bring to the table</span><span className="capability-count">{String(capabilityGroups[capability].length).padStart(2, '0')} skills</span></div><div className="skill-cloud">{capabilityGroups[capability].map((skill, index) => <motion.span key={skill} initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.045 }}>{skill}</motion.span>)}</div><div className="capability-foot"><Code2 size={18} /><p>Good systems feel quiet. I care about the structure underneath, the handoff between states and how the whole thing holds up when the happy path ends.</p></div></motion.div></AnimatePresence></div>
-          </div>
-        </section>
+            <div className="capability-layout">
+              <div className="capability-tabs" role="group" aria-label="Capability categories">
+                {(Object.keys(capabilityGroups) as (keyof typeof capabilityGroups)[]).map((group, index) => <button key={group} className={capability === group ? 'selected' : ''} aria-pressed={capability === group} onClick={() => setCapability(group)}><span>0{index + 1}</span>{group}<ArrowUpRight size={17} /></button>)}
+                <div className="capability-note"><Terminal size={16} /><span>Always learning,<br />usually building.</span></div>
+              </div>
+              <div className="capability-content"><AnimatePresence mode="wait"><motion.div key={capability} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.28 }}><div className="capability-title"><span>What I bring to the table</span><span className="capability-count">{String(capabilityGroups[capability].length).padStart(2, '0')} skills</span></div><div className="skill-cloud">{capabilityGroups[capability].map((skill, index) => <motion.span key={skill} initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.045 }}>{skill}</motion.span>)}</div><div className="capability-foot"><Code2 size={18} /><p>Good systems feel quiet. I care about the structure underneath, the handoff between states and how the whole thing holds up when the happy path ends.</p></div></motion.div></AnimatePresence></div>
+            </div>
+          </section>
+        </div>
 
         <section id="journey" className="section-pad journey-section" ref={journeyRef}>
           <motion.div className="section-intro journey-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
             <span className="section-index">03 / Experience</span>
-            <h2>Progress is a<br /><em>team sport.</em></h2>
+            <h2><span className="journey-word">Progress<motion.span className="journey-word-overlay" aria-hidden="true" style={{ clipPath: reduceMotion ? 'inset(0 0% 0 0%)' : journeyProgressClip }}>Progress</motion.span></span> is a<br /><em>team sport.</em></h2>
             <p>Three chapters of turning hard problems into systems people can rely on.</p>
           </motion.div>
           <div className="experience-layout">
