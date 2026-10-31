@@ -33,9 +33,9 @@ type SectionId = 'home' | 'about' | 'work' | 'capabilities' | 'journey' | 'educa
 
 const navItems: { id: SectionId; label: string }[] = [
   { id: 'about', label: 'About' },
-  { id: 'work', label: 'Work' },
-  { id: 'capabilities', label: 'Capabilities' },
+  { id: 'capabilities', label: 'Skills' },
   { id: 'journey', label: 'Experience' },
+  { id: 'work', label: 'Projects' },
   { id: 'education', label: 'Education' },
 ];
 
@@ -142,12 +142,50 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
+const aboutIntroVariants: Variants = {
+  hidden: { opacity: 1 },
+  visible: { opacity: 1, transition: { delayChildren: 0.08, staggerChildren: 0.13 } },
+};
+
+const aboutLineVariants: Variants = {
+  hidden: { y: '112%', rotateX: -18, opacity: 0 },
+  visible: { y: '0%', rotateX: 0, opacity: 1, transition: { duration: 0.82, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const reducedAboutLineVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.25 } },
+};
+
+const aboutCopyVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { delayChildren: 0.15, staggerChildren: 0.12 } },
+};
+
+const aboutCopyItemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } },
+};
+
+const reducedAboutCopyItemVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.25 } },
+};
+
 const Index = () => {
   const scrollTo = useSmoothScroll();
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.2 });
   const heroY = useTransform(scrollYProgress, [0, 0.22], [0, -90]);
+  const aboutRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: aboutEntryProgress } = useScroll({ target: aboutRef, offset: ['start end', 'start 25%'] });
+  const { scrollYProgress: aboutSectionProgress } = useScroll({ target: aboutRef, offset: ['start start', 'end end'] });
+  const aboutReveal = useSpring(useTransform(aboutEntryProgress, [0, 1], [0, 1]), { stiffness: 90, damping: 24, mass: 0.25 });
+  const tickerY = useTransform(aboutEntryProgress, [0, 1], [0, -18]);
+  const tickerOpacity = useTransform(aboutEntryProgress, [0, 0.72, 1], [1, 1, 0.62]);
+  const aboutEmblemRotate = useTransform(aboutSectionProgress, [0, 0.5, 1], [0, 360, 720]);
+  const aboutEmblemY = useTransform(aboutEntryProgress, [0, 1], [30, 0]);
   const [activeSection, setActiveSection] = useState<SectionId>('home');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [capability, setCapability] = useState<keyof typeof capabilityGroups>('Build');
@@ -158,7 +196,7 @@ const Index = () => {
   const journeyLineProgress = useSpring(journeyProgress, { stiffness: 100, damping: 24, mass: 0.2 });
 
   useEffect(() => {
-    const ids: SectionId[] = ['home', 'about', 'work', 'capabilities', 'journey', 'education', 'contact'];
+    const ids: SectionId[] = ['home', 'about', 'capabilities', 'journey', 'work', 'education', 'contact'];
     const observers = ids.map((id) => {
       const element = document.getElementById(id);
       if (!element) return null;
@@ -256,47 +294,52 @@ const Index = () => {
           </motion.div>
         </section>
 
-        <div className="ticker" aria-label="Specialties">
-          <div className="ticker-track">{[...orbitWords, ...orbitWords].map((word, index) => <span key={`${word}-${index}`}>{word} <b>✳</b></span>)}</div>
-        </div>
+        <motion.div className="ticker" aria-label="Specialties" style={{ y: reduceMotion ? 0 : tickerY, opacity: reduceMotion ? 1 : tickerOpacity }}>
+          <div className="ticker-track">
+            {[0, 1, 2, 3].map((copy) => (
+                <div className="ticker-group" key={`ticker-group-${copy}`} aria-hidden={copy > 0}>
+                {orbitWords.map((word) => <span key={word}>{word} <b>✳</b></span>)}
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
-        <section id="about" className="section-pad about-section">
-          <motion.div className="section-intro" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
-            <span className="section-index">01 / About</span><h2>The work in between<br /><em>the pixels.</em></h2>
+        <section id="about" className="section-pad about-section" ref={aboutRef}>
+          <motion.div className="section-intro about-intro" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={aboutIntroVariants}>
+            <div className="about-title-block">
+              <div className="about-topline"><span className="section-index">01 / About</span><span>Personal operating system</span></div>
+              <motion.div className="about-arrival-rule" style={{ scaleX: reduceMotion ? 1 : aboutReveal }} />
+              <h2 className="about-title" aria-label="The work in between the pixels.">
+                <span className="about-line-mask"><motion.span variants={reduceMotion ? reducedAboutLineVariants : aboutLineVariants}>The work in between</motion.span></span>
+                <span className="about-line-mask about-line-accent"><motion.span variants={reduceMotion ? reducedAboutLineVariants : aboutLineVariants}><em>the pixels.</em></motion.span></span>
+              </h2>
+            </div>
+            <motion.div className="about-emblem" style={{ rotate: reduceMotion ? 0 : aboutEmblemRotate, y: reduceMotion ? 0 : aboutEmblemY }} variants={reduceMotion ? reducedAboutLineVariants : { hidden: { opacity: 0, scale: 0.78 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.9, ease: 'easeOut' } } }}>
+              <div className="emblem-orbit emblem-orbit-outer"><span>curiosity</span><span>craft</span></div>
+              <div className="emblem-orbit emblem-orbit-inner"><span>VV</span></div>
+              <span className="emblem-spark">✳</span>
+              <span className="emblem-caption">Always in progress<br />India · 2026</span>
+            </motion.div>
           </motion.div>
           <div className="about-grid">
-            <motion.div className="about-statement" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={fadeUp}>
-              <p className="big-copy">I like the part where a messy problem becomes a product that feels obvious.</p>
-              <p>I&apos;m Vishal, a full stack engineer and MCA graduate at Amity University. My sweet spot sits between thoughtful product design, reliable backend systems and the tiny moments of motion that make software feel human.</p>
-              <p>Most recently, I&apos;ve been working on resilient infrastructure at Supercode. Before that: enterprise APIs, AI dashboards, multilingual chat and a lot of curiosity.</p>
-              <a className="text-link" href="mailto:vishalvishwas7082@gmail.com">Start a conversation <ArrowUpRight size={16} /></a>
+            <motion.div className="about-statement" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.22 }} variants={aboutCopyVariants}>
+              <motion.p className="big-copy" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}>I like the part where a messy problem becomes a product that feels obvious.</motion.p>
+              <motion.p variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}>I&apos;m Vishal, a full stack engineer and MCA graduate at Amity University. My sweet spot sits between thoughtful product design, reliable backend systems and the tiny moments of motion that make software feel human.</motion.p>
+              <motion.p variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}>Most recently, I&apos;ve been working on resilient infrastructure at Supercode. Before that: enterprise APIs, AI dashboards, multilingual chat and a lot of curiosity.</motion.p>
+              <motion.a className="text-link" href="mailto:vishalvishwas7082@gmail.com" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}>Start a conversation <ArrowUpRight size={16} /></motion.a>
             </motion.div>
-            <motion.div className="metrics-panel" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={fadeUp}>
-              <div className="metric-card"><span>01</span><strong>8.63</strong><p>CGPA · MCA @ Amity</p></div>
-              <div className="metric-card"><span>02</span><strong>10k</strong><p>requests / second</p></div>
-              <div className="metric-card"><span>03</span><strong>99.9%</strong><p>deployment uptime</p></div>
-              <div className="metric-card"><span>04</span><strong>20+</strong><p>APIs documented</p></div>
-              <div className="contact-mini"><span>Say hello</span><a href="mailto:vishalvishwas7082@gmail.com">vishalvishwas7082@gmail.com <ArrowUpRight size={14} /></a><button onClick={copyEmail}>{copied ? <><Check size={14} /> Copied</> : <><Copy size={14} /> Copy email</>}</button></div>
+            <motion.div className="metrics-panel" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={aboutCopyVariants}>
+              <motion.div className="metric-card" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}><span>01</span><strong>8.63</strong><p>CGPA · MCA @ Amity</p></motion.div>
+              <motion.div className="metric-card" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}><span>02</span><strong>10k</strong><p>requests / second</p></motion.div>
+              <motion.div className="metric-card" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}><span>03</span><strong>99.9%</strong><p>deployment uptime</p></motion.div>
+              <motion.div className="metric-card" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}><span>04</span><strong>20+</strong><p>APIs documented</p></motion.div>
+              <motion.div className="contact-mini" variants={reduceMotion ? reducedAboutCopyItemVariants : aboutCopyItemVariants}><span>Say hello</span><a href="mailto:vishalvishwas7082@gmail.com">vishalvishwas7082@gmail.com <ArrowUpRight size={14} /></a><button onClick={copyEmail}>{copied ? <><Check size={14} /> Copied</> : <><Copy size={14} /> Copy email</>}</button></motion.div>
             </motion.div>
-          </div>
-        </section>
-
-        <section id="work" className="section-pad work-section">
-          <motion.div className="section-intro work-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
-            <span className="section-index">02 / Selected work</span><h2>Proof, in <em>public.</em></h2><p>Real products, real constraints, and a few rabbit holes worth keeping.</p>
-          </motion.div>
-          <div className="project-stack">
-            {projects.map((project, index) => (
-              <motion.article className={`project-card tone-${project.tone}`} key={project.title} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={fadeUp} transition={{ delay: index * 0.04 }}>
-                <div className="project-image-wrap"><img src={project.image} alt={`${project.title} product preview`} /><div className="project-image-wash" /><span className="project-number">{project.number}</span>{project.live && <a href={project.live} target="_blank" rel="noreferrer" className="image-link" aria-label={`Open ${project.title}`}><ExternalLink size={18} /></a>}</div>
-                <div className="project-info"><div className="project-type">{project.type}</div><h3>{project.title}</h3><p>{project.description}</p><div className="project-outcome"><Check size={15} /> {project.outcome}</div><div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><div className="project-links">{project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ArrowUpRight size={15} /></a>}<a href={project.github} target="_blank" rel="noreferrer"><Github size={15} /> Source</a></div></div>
-              </motion.article>
-            ))}
           </div>
         </section>
 
         <section id="capabilities" className="section-pad capabilities-section">
-          <motion.div className="section-intro" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}><span className="section-index">03 / Capabilities</span><h2>From first sketch<br />to <em>last mile.</em></h2></motion.div>
+          <motion.div className="section-intro" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}><span className="section-index">02 / Skills</span><h2>From first sketch<br />to <em>last mile.</em></h2></motion.div>
           <div className="capability-layout">
             <div className="capability-tabs" role="group" aria-label="Capability categories">
               {(Object.keys(capabilityGroups) as (keyof typeof capabilityGroups)[]).map((group, index) => <button key={group} className={capability === group ? 'selected' : ''} aria-pressed={capability === group} onClick={() => setCapability(group)}><span>0{index + 1}</span>{group}<ArrowUpRight size={17} /></button>)}
@@ -308,7 +351,7 @@ const Index = () => {
 
         <section id="journey" className="section-pad journey-section" ref={journeyRef}>
           <motion.div className="section-intro journey-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
-            <span className="section-index">04 / Experience</span>
+            <span className="section-index">03 / Experience</span>
             <h2>Progress is a<br /><em>team sport.</em></h2>
             <p>Three chapters of turning hard problems into systems people can rely on.</p>
           </motion.div>
@@ -341,6 +384,20 @@ const Index = () => {
                 </motion.article>
               </AnimatePresence>
             </div>
+          </div>
+        </section>
+
+        <section id="work" className="section-pad work-section">
+          <motion.div className="section-intro work-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
+            <span className="section-index">04 / Selected projects</span><h2>Proof, in <em>public.</em></h2><p>Real products, real constraints, and a few rabbit holes worth keeping.</p>
+          </motion.div>
+          <div className="project-stack">
+            {projects.map((project, index) => (
+              <motion.article className={`project-card tone-${project.tone}`} key={project.title} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.18 }} variants={fadeUp} transition={{ delay: index * 0.04 }}>
+                <div className="project-image-wrap"><img src={project.image} alt={`${project.title} product preview`} /><div className="project-image-wash" /><span className="project-number">{project.number}</span>{project.live && <a href={project.live} target="_blank" rel="noreferrer" className="image-link" aria-label={`Open ${project.title}`}><ExternalLink size={18} /></a>}</div>
+                <div className="project-info"><div className="project-type">{project.type}</div><h3>{project.title}</h3><p>{project.description}</p><div className="project-outcome"><Check size={15} /> {project.outcome}</div><div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><div className="project-links">{project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ArrowUpRight size={15} /></a>}<a href={project.github} target="_blank" rel="noreferrer"><Github size={15} /> Source</a></div></div>
+              </motion.article>
+            ))}
           </div>
         </section>
 
